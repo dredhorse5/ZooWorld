@@ -4,7 +4,7 @@ using UnityEngine;
 namespace ZooWorld
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class AnimalMotor : MonoBehaviour, IMotor
+    public class AnimalMotor : AnimalComponent, IMotor
     {
         private const float GroundCheckEpsilon = 0.02f;
 

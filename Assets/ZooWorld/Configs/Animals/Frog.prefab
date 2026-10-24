@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8902276710371344335}
   - component: {fileID: 4146248807945087916}
   - component: {fileID: 1274913898939917905}
-  - component: {fileID: 6566177668006692424}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -93,27 +92,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &6566177668006692424
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2250219621956155256}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2462554958711543069
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +215,9 @@ GameObject:
   - component: {fileID: 2484757188850245598}
   - component: {fileID: 8566538818090621587}
   - component: {fileID: -1419092250179533647}
+  - component: {fileID: 3447995254155929545}
   - component: {fileID: 5212990011656962780}
+  - component: {fileID: 1819196209872861438}
   m_Layer: 0
   m_Name: Frog
   m_TagString: Untagged
@@ -295,6 +275,18 @@ MonoBehaviour:
     m_Bits: 64
   obstacleDistance: 3
   turnSpeed: 720
+--- !u!114 &3447995254155929545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6689547041353142740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8ea2c0a5824c66ab276af8e5377c8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.AnimalCollision
 --- !u!54 &5212990011656962780
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -322,6 +314,27 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
+--- !u!135 &1819196209872861438
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6689547041353142740}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &7400261670242735051
 GameObject:
   m_ObjectHideFlags: 0

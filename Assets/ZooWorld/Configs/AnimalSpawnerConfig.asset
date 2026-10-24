@@ -14,5 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.AnimalSpawnerConfig
   <SpawnDelay>k__BackingField: 2
   <Animals>k__BackingField:
-  - {fileID: 11400000, guid: 5c9faad87d584d34296be2a3e6ad5fb6, type: 2}
   - {fileID: 11400000, guid: 4fafa35a52ec12142ba7071c6673ced1, type: 2}
+  - {fileID: 11400000, guid: 5c9faad87d584d34296be2a3e6ad5fb6, type: 2}
+  - {fileID: 11400000, guid: 5c9faad87d584d34296be2a3e6ad5fb6, type: 2}
+  - {fileID: 11400000, guid: 5c9faad87d584d34296be2a3e6ad5fb6, type: 2}
+  - {fileID: 11400000, guid: 5c9faad87d584d34296be2a3e6ad5fb6, type: 2}
+  - {fileID: 11400000, guid: 5c9faad87d584d34296be2a3e6ad5fb6, type: 2}

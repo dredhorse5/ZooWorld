@@ -557,6 +557,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects:
   - {fileID: 403590525}
+  FoodChainRulesConfig: {fileID: 11400000, guid: 275b4b962ce74c24c8f6f6a6008552e0, type: 2}
 --- !u!4 &941387454
 Transform:
   m_ObjectHideFlags: 0

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49537e7629c74611a25cefde0f0e0437, type: 3}
   m_Name: Frog
   m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.AnimalConfig
+  AnimalType: 1
   <Prefab>k__BackingField: {fileID: 8566538818090621587, guid: 2b847854a2daa944684603de3018552e, type: 3}
   <MovementConfig>k__BackingField: {fileID: 11400000, guid: 3a04c44f2e066564e88121ad599aa98e, type: 2}
