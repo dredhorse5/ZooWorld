@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Frog
   m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.AnimalConfig
   <Prefab>k__BackingField: {fileID: 8566538818090621587, guid: 2b847854a2daa944684603de3018552e, type: 3}
-  <MovementConfig>k__BackingField: {fileID: 11400000, guid: 4907dbcd4f4c42343af7ba261a09e7dd, type: 2}
+  <MovementConfig>k__BackingField: {fileID: 11400000, guid: 3a04c44f2e066564e88121ad599aa98e, type: 2}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RandomMovementConfig
   m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.RandomMovementConfig
   <Speed>k__BackingField: 2
-  <SteerAngle>k__BackingField: 30
-  <NoiseFrequency>k__BackingField: 0.5
+  <SteerAngle>k__BackingField: 150
+  <NoiseFrequency>k__BackingField: 0.2
