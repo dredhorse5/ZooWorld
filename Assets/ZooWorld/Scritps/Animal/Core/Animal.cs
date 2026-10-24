@@ -5,6 +5,8 @@ namespace ZooWorld
 {
     public class Animal : MonoBehaviour
     {
+        [SerializeField]
+        private GameObject TastyFeedbackPrefab;
         public bool IsActive { get; private set; }
         private AnimalConfig config;
         
@@ -24,6 +26,11 @@ namespace ZooWorld
         {
             IsActive = false;
             Destroy(gameObject);
+        }
+
+        public void TastyFeedback()
+        {
+            Instantiate(TastyFeedbackPrefab, transform.position, Quaternion.identity);
         }
     }
     

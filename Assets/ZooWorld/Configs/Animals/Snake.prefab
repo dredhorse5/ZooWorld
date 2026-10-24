@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df2119cfdf54e838cf7d8d84ebcb9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.Animal
+  TastyFeedbackPrefab: {fileID: 6181706970618877700, guid: 98c67e17acd8c504cb11d8a6002a334b, type: 3}
 --- !u!114 &-3072761994013998574
 MonoBehaviour:
   m_ObjectHideFlags: 0

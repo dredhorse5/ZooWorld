@@ -34,7 +34,7 @@ namespace ZooWorld
             switch (rule)
             {
                 case Rules.Eat:
-                    // "a" - feedback - "tasty!"
+                    a.TastyFeedback();
                     b.Death();
                     break;
                 case Rules.Dead:
