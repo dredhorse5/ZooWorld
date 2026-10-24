@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d0e1f2a3b44f80792a3b4c5d6e7f89, type: 3}
+  m_Name: TastyFeedbackConfig
+  m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.TastyFeedbackConfig
+  <Prefab>k__BackingField: {fileID: 6181706970618877700, guid: 98c67e17acd8c504cb11d8a6002a334b, type: 3}
+  <Offset>k__BackingField: {x: 0, y: 0, z: 0}

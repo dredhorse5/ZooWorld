@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using VContainer;
 
@@ -11,18 +10,23 @@ namespace ZooWorld
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (Animal == null || !Animal.IsActive)
+            if (Animal == null || !Animal.IsAlive)
                 return;
-            if(collision.gameObject == null)
+            if (collision.gameObject == null)
                 return;
-            
-            if (!collision.gameObject.TryGetComponent<AnimalCollision>(
-                    out var otherReporter))
+
+            AnimalCollision otherReporter = collision.rigidbody != null
+                ? collision.rigidbody.GetComponent<AnimalCollision>()
+                : collision.gameObject.GetComponentInParent<AnimalCollision>();
+
+            if (otherReporter == null)
+                otherReporter = collision.gameObject.GetComponentInParent<AnimalCollision>();
+
+            if (otherReporter == null)
                 return;
 
             var other = otherReporter.Animal;
-
-            if (other == null || other == Animal || !other.IsActive)
+            if (other == null || other == Animal || !other.IsAlive)
                 return;
 
             foodChainService.HandleCollision(Animal, other);

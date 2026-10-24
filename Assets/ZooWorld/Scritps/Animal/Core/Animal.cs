@@ -1,20 +1,17 @@
-﻿using System;
 using UnityEngine;
 
 namespace ZooWorld
 {
     public class Animal : MonoBehaviour
     {
-        [SerializeField]
-        private GameObject TastyFeedbackPrefab;
-        public bool IsActive { get; private set; }
         private AnimalConfig config;
-        
+
+        public bool IsAlive { get; private set; }
         public AnimalTypes Type => config.AnimalType;
 
-        private void Start()
+        private void Awake()
         {
-            IsActive = true;
+            IsAlive = true;
         }
 
         public void Initialize(AnimalConfig config)
@@ -22,16 +19,13 @@ namespace ZooWorld
             this.config = config;
         }
 
-        public void Death()
+        public bool TryKill()
         {
-            IsActive = false;
-            Destroy(gameObject);
-        }
+            if (!IsAlive)
+                return false;
 
-        public void TastyFeedback()
-        {
-            Instantiate(TastyFeedbackPrefab, transform.position, Quaternion.identity);
+            IsAlive = false;
+            return true;
         }
     }
-    
 }
