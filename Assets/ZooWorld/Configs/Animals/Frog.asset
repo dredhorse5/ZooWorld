@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 49537e7629c74611a25cefde0f0e0437, type: 3}
-  m_Name: Snake
+  m_Name: Frog
   m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.AnimalConfig
-  <Prefab>k__BackingField: {fileID: 8415809932065685127, guid: 91dec1934c8d0b24dbf43e67e3926fdd, type: 3}
+  <Prefab>k__BackingField: {fileID: 8566538818090621587, guid: 2b847854a2daa944684603de3018552e, type: 3}
+  <MovementConfig>k__BackingField: {fileID: 11400000, guid: 4907dbcd4f4c42343af7ba261a09e7dd, type: 2}

@@ -7,5 +7,8 @@ namespace ZooWorld
     {
         [field: SerializeField]
         public Animal Prefab { get; private set; }
+
+        [field: SerializeField]
+        public BaseMovementConfig MovementConfig { get; private set; }
     }
 }
