@@ -10,6 +10,7 @@ namespace ZooWorld
         float Speed { get; }
         bool IsGrounded { get; }
 
+        public bool HasObstacle(Vector3 direction);
         public void Move(Vector3 direction, float speed);
         public void Move(Vector3 direction);
         public void Jump(float force);

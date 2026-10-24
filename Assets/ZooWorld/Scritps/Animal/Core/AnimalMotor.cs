@@ -18,11 +18,18 @@ namespace ZooWorld
         private float groundCheckDistance = 0.1f;
 
         [SerializeField]
+        private LayerMask obstacleMask = ~0;
+
+        [SerializeField]
+        private float obstacleDistance = 1.5f;
+
+        [SerializeField]
         private float turnSpeed = 720f;
 
         private IMovement movement;
         private BaseMovementConfig config;
         private float footOffset;
+        private Vector3 probeCenter;
 
         public Rigidbody Body => body;
         public Vector3 Position => body.position;
@@ -101,6 +108,17 @@ namespace ZooWorld
             body.MoveRotation(Quaternion.RotateTowards(body.rotation, target, turnSpeed * deltaTime));
         }
 
+        public bool HasObstacle(Vector3 direction)
+        {
+            direction.y = 0f;
+            if (direction.sqrMagnitude < 0.0001f)
+                return false;
+
+            Vector3 origin = transform.TransformPoint(probeCenter);
+
+            return Physics.Raycast(origin, direction.normalized, obstacleDistance, obstacleMask, QueryTriggerInteraction.Ignore);
+        }
+
         public void Brake()
         {
             Vector3 velocity = body.linearVelocity;
@@ -115,6 +133,7 @@ namespace ZooWorld
                 body = GetComponent<Rigidbody>();
 
             footOffset = CalculateFootOffset();
+            probeCenter = CalculateProbeCenter();
         }
 
         private void Reset() => body = GetComponent<Rigidbody>();
@@ -133,6 +152,19 @@ namespace ZooWorld
             float distance = groundCheckDistance + GroundCheckEpsilon * 2f;
 
             return Physics.Raycast(origin, Vector3.down, distance, groundMask, QueryTriggerInteraction.Ignore);
+        }
+
+        private Vector3 CalculateProbeCenter()
+        {
+            Collider[] colliders = GetComponentsInChildren<Collider>();
+            if (colliders.Length == 0)
+                return Vector3.up * 0.5f;
+
+            Bounds bounds = colliders[0].bounds;
+            for (int i = 1; i < colliders.Length; i++)
+                bounds.Encapsulate(colliders[i].bounds);
+
+            return transform.InverseTransformPoint(bounds.center);
         }
 
         private float CalculateFootOffset()

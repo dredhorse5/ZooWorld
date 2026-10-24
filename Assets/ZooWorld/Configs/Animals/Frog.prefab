@@ -236,6 +236,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2484757188850245598}
   - component: {fileID: 8566538818090621587}
+  - component: {fileID: -1419092250179533647}
   - component: {fileID: 5212990011656962780}
   m_Layer: 0
   m_Name: Frog
@@ -272,6 +273,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0df2119cfdf54e838cf7d8d84ebcb9ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.Animal
+--- !u!114 &-1419092250179533647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6689547041353142740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6442af03736c4611987149942cfa593e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.AnimalMotor
+  body: {fileID: 5212990011656962780}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  groundCheckDistance: 0.1
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 64
+  obstacleDistance: 3
+  turnSpeed: 720
 --- !u!54 &5212990011656962780
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -296,9 +319,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 80
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &7400261670242735051
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ namespace ZooWorld
 {
     public class RandomMovement : BaseMovement<RandomMovementConfig>
     {
+        private const float WallTurnAngle = 90f;
+
         private Vector3 baseDirection;
         private float noiseTime;
         private float noiseSeed;
@@ -24,6 +26,12 @@ namespace ZooWorld
             float steerAngle = noise * config.SteerAngle;
 
             Vector3 direction = Quaternion.Euler(0f, steerAngle, 0f) * baseDirection;
+
+            if (motor.HasObstacle(direction))
+            {
+                baseDirection = Quaternion.Euler(0f, WallTurnAngle, 0f) * direction;
+                direction = baseDirection;
+            }
 
             motor.RotateTowards(direction, deltaTime);
             motor.Move(direction, config.Speed);

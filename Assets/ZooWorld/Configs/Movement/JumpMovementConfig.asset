@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b0ce9949a2e4bff8bb5576e941972d8, type: 3}
   m_Name: JumpMovementConfig
   m_EditorClassIdentifier: Assembly-CSharp::ZooWorld.JumpMovementConfig
-  <Speed>k__BackingField: 0
+  <Speed>k__BackingField: 5
   jumpForce: 5
   minJumpDelay: 0.4
   maxJumpDelay: 1.2
