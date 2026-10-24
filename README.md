@@ -11,6 +11,20 @@ Unity test assignment: a small 3D zoo where prey and predators spawn, move, coll
 1. Open `Assets/ZooWorld/Scenes/SampleScene.unity`.
 2. Press **Play**. There is no player input; animals spawn and move automatically.
 
+## Configs
+
+| Asset | Responsibility |
+|---|---|
+| `Animals/Frog.asset`, `Animals/Snake.asset` (`AnimalConfig`) | animal role (`Prey` / `Predators`), prefab, and which movement config to use |
+| `Configs/AnimalSpawnerConfig.asset` | spawn interval and the weighted list of `AnimalConfig`s to spawn |
+| `Configs/FoodChainRulesConfig.asset` | role-to-role food-chain rules (`Eat`, `Dead`, `Nothing`, `NotImplemented`) |
+| `Configs/Movement/JumpMovementConfig.asset` | frog: inherited `Speed`, `jumpForce`, `minJumpDelay` / `maxJumpDelay`, `jumpTurnAngle` |
+| `Configs/Movement/LinearMovementConfig.asset` | snake: inherited `Speed`, `WallTurnAngle` |
+| `Configs/Movement/RandomMovementConfig.asset` | extra/legacy random strategy: inherited `Speed`, `SteerAngle`, `NoiseFrequency` |
+| `Configs/TastyFeedbackConfig.asset` | prefab and offset used by `TastyFeedbackService` for the “Tasty!” label |
+
+Config chain: `AnimalSpawnerConfig.Animals[] → AnimalConfig.Prefab + AnimalConfig.MovementConfig → BaseMovementConfig.Create() → IMovement`. `AnimalConfig.AnimalType` is what `FoodChainRulesConfig` uses for rule lookup. All configs are ScriptableObjects created via `Create → Animal/...`.
+
 ## Implemented
 
 - **Spawning** — `AnimalSpawner` spawns animals on a configurable interval from `AnimalSpawnerConfig` (weighted list).
@@ -25,44 +39,6 @@ Unity test assignment: a small 3D zoo where prey and predators spawn, move, coll
 - **Counters** — `ZooStatistics` counts dead prey/predators; `ZooHudView` renders them with uGUI/TextMeshPro.
 - **DI** — VContainer. `AnimalFactory` instantiates prefabs through `IObjectResolver`, so components on prefabs get their dependencies injected.
 - **Event-driven feedback** — `FoodChainService → IAnimalDeathService → IAnimalEvents → ZooStatistics / TastyFeedbackService / ZooHudView`.
-
-## Project map
-
-```
-Assets/ZooWorld/
-├── Animals/                 Frog/Snake prefabs and AnimalConfig assets
-├── Configs/
-│   ├── AnimalSpawnerConfig.asset
-│   ├── FoodChainRulesConfig.asset
-│   ├── TastyFeedbackConfig.asset
-│   └── Movement/            Random, Jump and Linear movement configs
-├── Prefabs/TastyFeedback.prefab
-├── Scenes/SampleScene.unity
-└── Scritps/
-    ├── Animal/Core/         Animal, AnimalConfig, AnimalFactory, AnimalMotor,
-    │                        AnimalCollision, events, death service
-    ├── Animal/Movement/     IMovement, BaseMovement, Random/Jump/Linear
-    ├── Animal/Interaction/  FoodChainRulesConfig, FoodChainService
-    ├── Animal/Statistics/   ZooStatistics
-    ├── Animal/Feedback/     TastyFeedbackConfig/Service
-    ├── World/               AnimalSpawner
-    ├── DI/                  GameLifeTimeScope, GameEntryPoint
-    └── UI/                  ZooHudView
-```
-
-## Configs
-
-| Asset | Responsibility |
-|---|---|
-| `Animals/Frog.asset`, `Animals/Snake.asset` (`AnimalConfig`) | animal role (`Prey` / `Predators`), prefab, and which movement config to use |
-| `Configs/AnimalSpawnerConfig.asset` | spawn interval and the weighted list of `AnimalConfig`s to spawn |
-| `Configs/FoodChainRulesConfig.asset` | role-to-role food-chain rules (`Eat`, `Dead`, `Nothing`, `NotImplemented`) |
-| `Configs/Movement/JumpMovementConfig.asset` | frog: inherited `Speed`, `jumpForce`, `minJumpDelay` / `maxJumpDelay`, `jumpTurnAngle` |
-| `Configs/Movement/LinearMovementConfig.asset` | snake: inherited `Speed`, `WallTurnAngle` |
-| `Configs/Movement/RandomMovementConfig.asset` | extra/legacy random strategy: inherited `Speed`, `SteerAngle`, `NoiseFrequency` |
-| `Configs/TastyFeedbackConfig.asset` | prefab and offset used by `TastyFeedbackService` for the “Tasty!” label |
-
-Config chain: `AnimalSpawnerConfig.Animals[] → AnimalConfig.Prefab + AnimalConfig.MovementConfig → BaseMovementConfig.Create() → IMovement`. `AnimalConfig.AnimalType` is what `FoodChainRulesConfig` uses for rule lookup. All configs are ScriptableObjects created via `Create → Animal/...`.
 
 ## Architecture in one minute
 
@@ -79,9 +55,3 @@ Config chain: `AnimalSpawnerConfig.Animals[] → AnimalConfig.Prefab + AnimalCon
 - **New movement:** implement `BaseMovement<T>` + a config with `Create()`; assign that config to an animal.
 - **New rule:** add an entry to `FoodChainRulesConfig` (from role → to role → Eat / Dead / Nothing).
 - **New feedback:** subscribe to `IAnimalEvents.AnimalDied`; do not modify `FoodChainService`.
-
-## Known limitations
-
-- Returning animals to the play area when they leave the screen is not implemented yet.
-- No object pooling for spawned animals.
-- Camera is a high tilted top-down view rather than a strict orthographic top-down camera.
